@@ -1,0 +1,39 @@
+<mat-card>
+    <mat-card-content fxLayout="column" fxLayoutAlign="center">
+        <form [formGroup]="form" (ngSubmit)="upload()">
+            <table>
+                <tr>
+                    <td><img [src]="imageData" class="thumbnail"/> </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Title</mat-label>
+                            <input matInput type="text" size="30" formControlName="title"/>
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Complain</mat-label>
+                            <input matInput type="text" size="30" formControlName="complain"/>
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                       <button mat-raised-button color="primary" type="button"
+                         [routerLink]="['/']">Back</button>
+
+                         <button mat-raised-button color="warning" type="submit">Upload</button>
+                    </td>
+                </tr>
+
+            </table>
+
+        </form>
+
+    </mat-card-content>
+</mat-card>

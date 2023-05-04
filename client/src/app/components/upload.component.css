@@ -1,0 +1,10 @@
+.thumbnail {
+    width:35vw;
+    height:30vw;
+}
+
+:host {
+    display:flex;
+    flex-direction:column;
+    align-items: flex-start;
+}

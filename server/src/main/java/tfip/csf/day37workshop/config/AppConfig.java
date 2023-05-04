@@ -12,26 +12,28 @@ import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 
 @Configuration
 public class AppConfig {
+   @Value("${DO_STORAGE_KEY}")
+   private String accessKey; 
 
-    @Value("${DO_STORAGE_KEY}")
-    private String accessKey;
+   @Value("${DO_STORAGE_SECRETKEY}")
+   private String secretKey; 
 
-    @Value("${DO_STORAGE_SECRETKEY}")
-    private String secretKey;
-    
-    @Value("${DO_STORAGE_ENDPOINT}")
-    private String endPoint;
+   @Value("${DO_STORAGE_ENDPOINT}")
+   private String endPoint; 
 
-    @Value("${DO_STORAGE_ENDPOINT_REGION}")
-    private String endPointRegion;
+   @Value("${DO_STORAGE_ENDPOINT_REGION}")
+   private String endPointRegion;
+   
+   @Bean
+   public AmazonS3 createS3Client(){
+        BasicAWSCredentials cred =
+                new BasicAWSCredentials(accessKey, secretKey);
+        EndpointConfiguration ep = 
+                new EndpointConfiguration(endPoint, endPointRegion);
 
-    @Bean
-    public AmazonS3 createS3Client(){
-        BasicAWSCredentials cred = new BasicAWSCredentials(accessKey, secretKey);
-        EndpointConfiguration ep = new EndpointConfiguration(endPoint, endPointRegion);
         return AmazonS3ClientBuilder.standard()
-        .withEndpointConfiguration(ep)
-        .withCredentials(new AWSStaticCredentialsProvider(cred))
-        .build();
-    }
+            .withEndpointConfiguration(ep)
+            .withCredentials(new AWSStaticCredentialsProvider(cred))
+            .build();
+   }
 }
