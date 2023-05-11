@@ -16,8 +16,7 @@ public class FileUploadService {
     @Autowired
     private FileUploadRepository repo;
 
-    public void upload(MultipartFile file, String title,
-    String complain) throws SQLException, IOException{
+    public void upload(MultipartFile file, String title, String complain) throws SQLException, IOException{
         this.repo.upload(file, title, complain);
     }
 

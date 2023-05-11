@@ -20,15 +20,12 @@ import tfip.csf.day37workshop.models.Post;
 
 @Repository
 public class FileUploadRepository {
-    private static final String INSERT_POST_SQL
-            = "INSERT INTO posts( blobc, title, complain) VALUES (?,?,?)";
+    private static final String INSERT_POST_SQL = "INSERT INTO posts( blobc, title, complain) VALUES (?,?,?)";
     
-    private static final String SQL_GET_POST_BY_POSTID
-            = "select id , title, complain, blobc from posts where id=?";
+    private static final String SQL_GET_POST_BY_POSTID = "select id , title, complain, blobc from posts where id=?";
     
     @Autowired
     private DataSource dataSource;
-    
 
     @Autowired
     private JdbcTemplate template;
@@ -45,8 +42,7 @@ public class FileUploadRepository {
     }
 
     public Optional<Post> getPostById(Integer postId){
-        return template.query(
-            SQL_GET_POST_BY_POSTID,
+        return template.query(SQL_GET_POST_BY_POSTID,
             (ResultSet rs)->{
                 if(!rs.next())
                     return Optional.empty();

@@ -28,9 +28,8 @@ export class ViewImageComponent implements OnInit, OnDestroy{
           //     console.log(this.imageData);
           // });
           let r = await this.fileUpSvc.getImage(this.postId);
-          console.log(r);
+          console.log(r.image);
           this.imageData = r.image;
-          
         }
       );
     }
